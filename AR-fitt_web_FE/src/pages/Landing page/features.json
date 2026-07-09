@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "suggestionsLogo.png",
+    "title": "Suggestions",
+    "description": "Receive curated clothing suggestions based on your style preferences, body shape, and occasion, ensuring every outfit is a perfect match for you."
+  },
+  {
+    "icon": "virtualTryOnLogo.png",
+    "title": "Virtual Try On",
+    "description": "Experience the convenience of trying on clothes virtually, guaranteeing a perfect fit with every purchase. Ensuring you to shop with confidence, saving time and eliminating uncertainty."
+  },
+  {
+    "icon": "bodyScanLogo.png",
+    "title": "Body Scan",
+    "description": "Let our AI take precise body measurements, ensuring your clothing fits you flawlessly."
+  },
+  {
+    "icon": "skinMatchLogo.png",
+    "title": "Skin Match",
+    "description": "Discover makeup and clothing colors that complement your unique skin tone, thanks to our AI-driven skin profiling technology."
+  }
+]

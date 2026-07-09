@@ -1,0 +1,38 @@
+{
+  "name": "ar-fitt_backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "For ARFitt app backend implementation",
+  "exports": "./server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "prisma generate",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "file-type": "^19.1.1",
+    "fs": "^0.0.1-security",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^6.9.13",
+    "otp-generator": "^4.0.1",
+    "pg": "^8.12.0",
+    "stripe": "^15.6.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "globals": "^15.1.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^5.13.0"
+  }
+}

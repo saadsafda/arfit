@@ -1,0 +1,32 @@
+[
+  {
+    "name": "ABOUT US",
+    "link": "#aboutUs",
+    "type": "link"
+  },
+  {
+    "name": "HOW IT WORKS",
+    "link": "#howItWorks",
+    "type": "link"
+  },
+  {
+    "name": "FEATURES",
+    "link": "#features",
+    "type": "link"
+  },
+  {
+    "name": "CONTACT",
+    "link": "#contact",
+    "type": "link"
+  },
+  {
+    "name": "TERMS & CONDITIONS",
+    "link": "/terms-and-conditions",
+    "type": "link"
+  },
+  {
+    "name": "Login",
+    "link": "/login",
+    "type": "button"
+  }
+]

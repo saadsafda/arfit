@@ -1,0 +1,29 @@
+{
+  "apparels": [
+    {
+      "name": "Outwear",
+      "image": "./assets/images/signUp/outwearCategory.png"
+    },
+    { "name": "Tops", "image": "./assets/images/signUp/Tops category.png" },
+    { "name": "Pants", "image": "./assets/images/signUp/Pants category.png" },
+    { "name": "Jeans", "image": "./assets/images/signUp/Jeans category.png" }
+  ],
+  "cosmetics": [
+    {
+      "name": "Eye Makeup",
+      "image": "./assets/images/signUp/Eye makeup category.png"
+    },
+    {
+      "name": "Foundation",
+      "image": "./assets/images/signUp/Foundation category.png"
+    },
+    {
+      "name": "Lipstick",
+      "image": "./assets/images/signUp/Lipstick category.png"
+    },
+    {
+      "name": "Hair Color",
+      "image": "./assets/images/signUp/Hair color category.png"
+    }
+  ]
+}

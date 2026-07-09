@@ -1,0 +1,5 @@
+export const ErrorConstants = {
+  PRISMA_CLIENT_KNOWN_REQUEST_ERROR: "PrismaClientKnownRequestError",
+  PRISMA_RECORD_ALREADY_EXISTS_ERROR_CODE: "P2002",
+  PRISMA_RECORD_NOT_EXISTS: "P2001",
+};

@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id String @id
+  email String? @unique
+  first_name String?
+  last_name String?
+  phone String?
+  gender String
+  dob DateTime @db.Date
+  is_verified Boolean
+  is_subscribed Boolean
+  is_body_scanned Boolean
+  is_face_scanned Boolean
+  created_at DateTime
+  modified_at DateTime @updatedAt
+  role String @default("user")
+}
+
+model user_body_matrix {
+  user_id String @id
+  body_matrix String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model user_face_matrix {
+  user_id String @id
+  face_matrix String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model user_body_image {
+  user_id             String   @id
+  body_image          String
+  recommended_size    String
+  recommended_colors  String
+  recommended_shirts  String
+  created_at          DateTime?
+  modified_at         DateTime?
+  
+}
+
+model user_face_image {
+  user_id String @id
+  face_image String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model user_credential {
+  user_email String @id
+  password_hash String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model user_subscription {
+  user_id String @id
+  subscription_plan_id String
+  subscription_id String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model payment_service_user {
+  user_id String @id
+  payment_service_user_id String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model inventory_category {
+  id String @id
+  name String
+  description String?
+  type String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+  
+  // Relations
+  items inventory_item[]
+}
+
+model inventory_item {
+  id String @id
+  category_id String
+  name String
+  brand String
+  price String
+  currency String
+  description String?
+  lens_id String
+  gender String?
+  
+  // Relations
+  category inventory_category @relation(fields: [category_id], references: [id])
+  colors inventory_item_color[]
+  sizes inventory_item_size[]
+  images inventory_item_image[]
+  imageUrls inventory_item_image_url[]
+}
+
+model inventory_item_color {
+  id String @id
+  item_id String
+  color String
+  color_hex String
+  
+  // Relations
+  item inventory_item @relation(fields: [item_id], references: [id])
+}
+
+model inventory_item_size {
+  id String @id
+  item_id String
+  size String
+ 
+  // Relations
+  item inventory_item @relation(fields: [item_id], references: [id])
+}
+
+model inventory_item_image_url {
+  id String @id
+  item_id String
+  image_url String
+  
+  // Relations
+  item inventory_item @relation(fields: [item_id], references: [id])
+}
+
+model inventory_item_image {
+  id String @id
+  item_id String
+  image Bytes
+  created_at DateTime
+  modified_at DateTime @updatedAt
+  
+  // Relations
+  item inventory_item @relation(fields: [item_id], references: [id])
+}
+
+model inventory_demo_item {
+  item_id String @id
+  is_demo_item Boolean
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model inventory_demo_category {
+  category_id String @id
+  is_demo_item Boolean
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}
+
+model user_otp {
+  id String @id
+  user_email String
+  otp_hash String
+  created_at DateTime
+  modified_at DateTime @updatedAt
+}

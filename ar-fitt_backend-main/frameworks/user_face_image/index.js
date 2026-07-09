@@ -1,0 +1,51 @@
+import { UserFaceImageController } from "../../adapters/express/controllers/UserFaceImageController.js";
+import { UserRepository } from "../../adapters/database/repositories/UserRepository.js";
+import { UserFaceImageRepository } from "../../adapters/database/repositories/UserFaceImageRepository.js";
+import { CreateUserFaceImageUseCase } from "../../usecases/user/face_image/CreateUserFaceImage.js";
+import { FetchUserFaceImageUseCase } from "../../usecases/user/face_image/FetchUserFaceImage.js";
+import { UpdateUserFaceImageUseCase } from "../../usecases/user/face_image/UpdateUserFaceImage.js";
+import { DeleteUserFaceImageUseCase } from "../../usecases/user/face_image/DeleteUserFaceImage.js";
+import { FetchUserFaceImageURLUseCase } from "../../usecases/user/face_image/FetchUserFaceImageURL.js";
+import { AuthServiceMiddleware } from "../../middleware/authorization_service/usecases/AuthServiceMiddleware.js";
+import { Headers } from "../../middleware/common/headers.js";
+import { CreateUserFaceImageValidation } from "../../middleware/data_validation/CreateUserFaceImageValidation.js";
+import { FetchUserImageURLValidation } from "../../middleware/data_validation/FetchUserImageURLValidation.js";
+
+const userRepository = new UserRepository();
+const userFaceImageRepository = new UserFaceImageRepository();
+const authServiceMiddleware = new AuthServiceMiddleware();
+const commonHeaders = new Headers();
+const createUserFaceImageValidation = new CreateUserFaceImageValidation();
+const fetchUserImageURLValidation = new FetchUserImageURLValidation();
+
+const createUserFaceImageUseCase = new CreateUserFaceImageUseCase(
+  userRepository,
+  userFaceImageRepository
+);
+const fetchUserFaceImageUseCase = new FetchUserFaceImageUseCase(
+  userFaceImageRepository
+);
+const updateUserFaceImageUseCase = new UpdateUserFaceImageUseCase(
+  userRepository,
+  userFaceImageRepository
+);
+const deleteUserFaceImageUseCase = new DeleteUserFaceImageUseCase(
+  userRepository,
+  userFaceImageRepository
+);
+const fetchUserFaceImageURLUseCase = new FetchUserFaceImageURLUseCase(
+  userRepository,
+  userFaceImageRepository
+);
+
+export const userFaceImageController = new UserFaceImageController(
+  createUserFaceImageUseCase,
+  fetchUserFaceImageUseCase,
+  updateUserFaceImageUseCase,
+  deleteUserFaceImageUseCase,
+  fetchUserFaceImageURLUseCase,
+  authServiceMiddleware,
+  commonHeaders,
+  createUserFaceImageValidation,
+  fetchUserImageURLValidation
+);

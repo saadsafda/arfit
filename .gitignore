@@ -1,0 +1,12 @@
+node_modules
+# Keep environment variables out of version control
+.env*
+.DS_Store
+.vscode
+database_setup/schema_statements/.DS_Store
+database_setup/.DS_Store
+
+# Build artifacts
+AR-fitt_web_FE/build/
+AR-fitt_web_FE/build_1_3/
+ar-fitt_backend-main/ar-fitt_backend-main-files.zip

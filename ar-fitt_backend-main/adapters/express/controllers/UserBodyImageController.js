@@ -10,8 +10,7 @@ import { PrismaClient } from "@prisma/client";
 import { User } from "../../../entities/User.js";
 
 import { APIResponse } from "../../../infra/utils/api_response/APIResponse.js";
-
-// For Node.js versions earlier than 18, run: npm install node-fetch to add the dependency
+import { getRecommendations } from "../../../infra/services/RecommendationService.js";
 
 const prisma = new PrismaClient();
 
@@ -88,16 +87,9 @@ export class UserBodyImageController {
     let recommendedSize, recommendedColors, recommendedShirts;
     try {
 
-      console.log("Before API Call");
+      console.log("Before recommendation call");
 
-      // const recResponse = await fetch("http://127.0.0.1:5000/recommend", {
-      const recResponse = await fetch("http://arfitt.com:5000/recommend", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image: req.body.bodyImage }),
-      });
-      const recData = await recResponse.json();
-      const recommendations = recData.recommendations;
+      const recommendations = await getRecommendations(req.body.bodyImage);
       const lines = recommendations.split("\n").map(line => line.trim());
       for (const line of lines) {
         if (line.startsWith("Size =")) {

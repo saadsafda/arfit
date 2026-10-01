@@ -11,6 +11,7 @@ import { addToCart } from "../../redux/cart/cartActions";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { getHostedTryOnUrl } from "../../utils/tryOn";
 
 const ItemDescription = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ const ItemDescription = () => {
     dispatch(setOpenCameraModule(false));
   };
   const handleOpen = () => {
+    const hostedUrl = getHostedTryOnUrl(selectedItem?.lensId);
+    if (hostedUrl) {
+      window.open(hostedUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
     dispatch(setOpenCameraModule(true));
   };
   const handleSelectedSize = (size: string) => {

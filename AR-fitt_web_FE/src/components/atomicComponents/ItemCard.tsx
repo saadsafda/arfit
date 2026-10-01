@@ -8,6 +8,7 @@ import {
   setOpenCameraModule,
   setSelectedItem,
 } from "../../redux/main/mainActions";
+import { getHostedTryOnUrl } from "../../utils/tryOn";
 
 interface ItemCardProps {
   item: any;
@@ -90,8 +91,14 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
           <Grid
             xs={5.5}
             className="px-2 py-4 w-[35%] min-h-4 bg-primary rounded-md gap-3 flex items-center justify-center"
-            onClick={() => {
-              dispatch(setOpenCameraModule(true));
+            onClick={(event) => {
+              event.stopPropagation();
+              const hostedUrl = getHostedTryOnUrl(item?.lensId);
+              if (hostedUrl) {
+                window.open(hostedUrl, "_blank", "noopener,noreferrer");
+              } else {
+                dispatch(setOpenCameraModule(true));
+              }
               handleItemClick();
             }}
           >
